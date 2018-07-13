@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour {
 
@@ -62,6 +63,7 @@ public class SceneManager : MonoBehaviour {
         int rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
+        changeImgForm();
 
     }
 	
@@ -81,6 +83,7 @@ public class SceneManager : MonoBehaviour {
             rand = Random.Range(0, typeForms.Count);
 
             form = typeForms[rand];
+            changeImgForm();
 
             countCorrectForm++;
 
@@ -94,6 +97,7 @@ public class SceneManager : MonoBehaviour {
             rand = Random.Range(0, typeForms.Count);
 
             form = typeForms[rand];
+            changeImgForm();
 
             countCorrectForm++;
 
@@ -105,7 +109,17 @@ public class SceneManager : MonoBehaviour {
         rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
+        changeImgForm();
 
         return false;
+    }
+
+    public void changeImgForm()
+    {
+        Image imageForm = GameObject.FindGameObjectWithTag("Form").GetComponent<Image>();
+        string matForm = "Materials/" + form + "Form";
+
+        Material mat = Resources.Load(matForm, typeof(Material)) as Material;
+        imageForm.material = mat;
     }
 }
