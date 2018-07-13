@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Gesture Name="null~01" Subject="10" InputType="stylus" Speed="MEDIUM" NumPts="116">
-	<Stroke index="1">
+<Gesture Name = "Invalid">
+	<Stroke>
 		<Point X="130" Y="38" T="1302126495172" Pressure="128" />
 		<Point X="141" Y="11" T="1302126495172" Pressure="128" />
 		<Point X="138" Y="14" T="1302126495172" Pressure="128" />
@@ -46,7 +46,7 @@
 		<Point X="54" Y="169" T="1302126495469" Pressure="128" />
 		<Point X="54" Y="169" T="1302126495500" Pressure="128" />
 	</Stroke>
-	<Stroke index="2">
+	<Stroke>
 		<Point X="118" Y="52" T="1302126504439" Pressure="128" />
 		<Point X="118" Y="49" T="1302126504439" Pressure="128" />
 		<Point X="100" Y="46" T="1302126504439" Pressure="128" />

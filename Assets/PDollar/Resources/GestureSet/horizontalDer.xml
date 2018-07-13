@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "horizontalDer">
+	<Stroke>
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "160" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "243" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "327" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "419" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "487" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "508" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+		<Point X = "509" Y = "-348" T = "0" Pressure = "255" />
+	</Stroke>
+</Gesture>
