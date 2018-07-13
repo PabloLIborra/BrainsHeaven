@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "verticalIzq">
+	<Stroke>
+		<Point X = "292" Y = "-283" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-298" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-320" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-350" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-381" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-406" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-426" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-447" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-466" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-482" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-486" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+		<Point X = "292" Y = "-488" T = "0" Pressure = "255" />
+	</Stroke>
+</Gesture>
