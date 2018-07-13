@@ -57,8 +57,8 @@ public class GestureScript : MonoBehaviour {
 
         if (drawArea.Contains(virtualKeyPosition))
         {
-
-            if (Input.GetMouseButtonDown(0))
+            SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
+            if (scene.playing && Input.GetMouseButtonDown(0))
             {
 
                 if (recognized)
@@ -94,6 +94,8 @@ public class GestureScript : MonoBehaviour {
 
                 Gesture candidate = new Gesture(points.ToArray());
                 Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
+
+                scene.checkGesture(gestureResult.GestureClass);
 
                 points.Clear();
 
