@@ -95,6 +95,9 @@ public class GestureScript : MonoBehaviour {
                 Gesture candidate = new Gesture(points.ToArray());
                 Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 
+                SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
+                scene.checkGesture(gestureResult.GestureClass);
+
                 points.Clear();
 
                 foreach (LineRenderer lineRenderer in gestureLinesRenderer)

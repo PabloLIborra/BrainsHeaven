@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 930214387}
   m_Layer: 0
   m_Name: SceneManager
-  m_TagString: Untagged
+  m_TagString: Scene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,12 +141,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0cfe23b0d4c0449b25e2cde85223c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forms:
-  - 
-  - 
-  - 
-  - 
-  - 
+  typeForms:
+  - a
+  - v
+  percentageForm:
+  - 20
+  - 80
+  percentageRepetition:
+  - 50
+  - 50
+  numCorrectFormToGetRight: 10
 --- !u!4 &930214386
 Transform:
   m_ObjectHideFlags: 0
