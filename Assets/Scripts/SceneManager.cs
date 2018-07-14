@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour {
 
@@ -9,7 +10,7 @@ public class SceneManager : MonoBehaviour {
     public List<int> percentageForm = new List<int>();
     public List<int> percentageRepetition = new List<int>();
 
-    int countCorrectForm = 0;
+    public int countCorrectForm = 0;
     public int numCorrectFormToGetRight = 10;
 
     public float timeleft = 20.0f;
@@ -64,6 +65,9 @@ public class SceneManager : MonoBehaviour {
         int rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
+        changeImgForm();
+
+        playing = true;
 
     }
 	
@@ -72,6 +76,7 @@ public class SceneManager : MonoBehaviour {
         timeleft -= Time.deltaTime;
         if(timeleft < 0)
         {
+            Debug.Log(timeleft);
             //Call lose event;
             playing = false;
         }
@@ -118,7 +123,9 @@ public class SceneManager : MonoBehaviour {
 
         if(gesture == formCheck)
         {
+            
             generateNewRandomForm();
+            changeImgForm();
             countCorrectForm++;
 
             return true;
@@ -129,7 +136,7 @@ public class SceneManager : MonoBehaviour {
         if (gesture == formCheck)
         {
             generateNewRandomForm();
-
+            changeImgForm();
             countCorrectForm++;
 
             return true;
@@ -143,7 +150,18 @@ public class SceneManager : MonoBehaviour {
         else
         {
             generateNewRandomForm();
+            changeImgForm();
         }
+
         return false;
+    }
+
+    public void changeImgForm()
+    {
+        Image imageForm = GameObject.FindGameObjectWithTag("Form").GetComponent<Image>();
+        string matForm = "Materials/" + form + "Form";
+
+        Material mat = Resources.Load(matForm, typeof(Material)) as Material;
+        imageForm.material = mat;
     }
 }
