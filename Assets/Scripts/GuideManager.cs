@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GuideManager : MonoBehaviour {
     public List<string> guide = new List<string>();
+    public List<GameObject> references = new List<GameObject>();
+    public List<GameObject> arrows = new List<GameObject>();
 
     bool clockwise = true;
 	// Use this for initialization

@@ -157,5 +157,6 @@ public class SceneManager : MonoBehaviour {
 
         Material mat = Resources.Load(matForm, typeof(Material)) as Material;
         imageForm.material = mat;
+
     }
 }
