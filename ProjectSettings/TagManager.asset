@@ -13,6 +13,7 @@ TagManager:
   - FlashRed
   - FlashGreen
   - PauseCanvas
+  - TimeBar
   layers:
   - Default
   - TransparentFX
