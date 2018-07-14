@@ -10,13 +10,29 @@ public class SceneManager : MonoBehaviour {
     public List<int> percentageForm = new List<int>();
     public List<int> percentageRepetition = new List<int>();
 
+    public GameObject guide;
+
+    public int normalPercentage = 100;
+    public int nextPercentage = 0;
+
     public int countCorrectForm = 0;
     public int numCorrectFormToGetRight = 10;
 
     public float timeleft = 20.0f;
+    public float timeleftMax = 20.0f;
     public bool playing;
+
+    //Flash Image
+    float flashTime = 0.0f;
+    bool flashActive = false;
+    public float transitionFlash = 0.2f;
+
+    public bool gamePause = false;
+
 	// Use this for initialization
 	void Start () {
+
+        timeleft = timeleftMax;
 
 		if(typeForms.Count == 0)
         {
@@ -65,21 +81,51 @@ public class SceneManager : MonoBehaviour {
         int rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
-        changeImgForm();
+        changeImgForm(0);
 
         playing = true;
-
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-        timeleft -= Time.deltaTime;
-        if(timeleft < 0)
+        
+        if(playing == true)
         {
-            Debug.Log(timeleft);
-            //Call lose event;
-            playing = false;
+            timeleft -= Time.deltaTime;
+            updateTimeBar();
         }
+        if(timeleft < 0 && playing == true)
+        {
+            playing = false;
+
+            GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
+            imageForm.SetActive(false);
+
+            Canvas defeat = GameObject.FindGameObjectWithTag("DefeatCanvas").GetComponent<Canvas>();
+            defeat.enabled = true;
+        }
+
+        //Check Time Flash Image
+        if(flashActive)
+        {
+            if(flashTime - timeleft >= transitionFlash)
+            {
+                Image flashImg;
+                flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+                if(flashImg.enabled == true)
+                {
+                    flashImg.enabled = false;
+                }
+
+                flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+                if (flashImg.enabled == true)
+                {
+                    flashImg.enabled = false;
+                }
+            }
+        }
+
 	}
 
     void generateNewRandomForm()
@@ -115,17 +161,39 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
+    //This is going to be the worst method I've ever written
+    int chooseType()
+    {
+        int rand = Random.Range(0, 100);
+        if(rand <= normalPercentage)
+        {
+            return 0;
+        }
+        else
+        {
+            rand -= normalPercentage;
+        }
+        if(rand <= nextPercentage)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+
     public void checkGesture(string gesture)
     {
 
         string formCheck = form + "Der";
         int rand;
+        int type = chooseType();
 
-        if(gesture == formCheck)
+
+        if (gesture == formCheck)
         {
             
             generateNewRandomForm();
-            changeImgForm();
+            flashImage(true);
             countCorrectForm++;
         }
 
@@ -134,29 +202,70 @@ public class SceneManager : MonoBehaviour {
         if (gesture == formCheck)
         {
             generateNewRandomForm();
-            changeImgForm();
+            flashImage(true);
             countCorrectForm++;
         }
 
         if(countCorrectForm == numCorrectFormToGetRight)
         {
             playing = false;
-            //Here is your winning function
+
+            GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
+            imageForm.SetActive(false);
+          
+            Canvas victory = GameObject.FindGameObjectWithTag("VictoryCanvas").GetComponent<Canvas>();
+            victory.enabled = true;
         }
         else
         {
             generateNewRandomForm();
-            changeImgForm();
+            changeImgForm(type);
+            flashImage(false);
+        }
+        if (type == 1)
+        {
+            form = guide.GetComponent<GuideManager>().GetNext(form);
         }
     }
 
-    public void changeImgForm()
+    public void changeImgForm(int type)
     {
         Image imageForm = GameObject.FindGameObjectWithTag("Form").GetComponent<Image>();
-        string matForm = "Materials/" + form + "Form";
+        string matForm = form;
+        if (type == 1)
+        {
+            matForm += "B";
+        }
 
-        Material mat = Resources.Load(matForm, typeof(Material)) as Material;
-        imageForm.material = mat;
+        Sprite mat = Resources.Load(matForm, typeof(Sprite)) as Sprite;
+        imageForm.sprite = mat;
 
     }
+
+    public void flashImage(bool flash)
+    {
+        Image flashImg;
+        if (flash)
+        {
+            flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+            flashImg.enabled = true;
+            flashTime = timeleft;
+            flashActive = true;
+        }
+        else
+        {
+            flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+            flashImg.enabled = true;
+            flashTime = timeleft;
+            flashActive = true;
+        }
+    }
+
+    public void updateTimeBar()
+    {
+        Scrollbar scrollTime = GameObject.FindGameObjectWithTag("TimeBar").GetComponent<Scrollbar>();
+
+        scrollTime.size = timeleft / timeleftMax;
+    }
+
 }

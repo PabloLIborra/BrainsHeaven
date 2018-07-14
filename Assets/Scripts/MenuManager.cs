@@ -42,8 +42,17 @@ public class MenuManager : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene( int.Parse(inner_text) );
 	}
 
-	//Next level
-	public void NextLevel()
+    //Try Again level
+    public void TryAgainLevel()
+    {
+        //Load the next scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+                            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+                            );
+    }
+
+    //Next level
+    public void NextLevel()
 	{
 		//Load the next scene
 		UnityEngine.SceneManagement.SceneManager.LoadScene(
@@ -96,6 +105,31 @@ public class MenuManager : MonoBehaviour {
 			file.Close();
 		}
 	}
+
+    //Pause Menu
+    public void PauseGame()
+    {
+        SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
+
+        if(Time.timeScale > 0.0f)
+        {
+            scene.gamePause = true;
+            Time.timeScale = 0.0f;
+
+            Canvas pauseCanvas = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<Canvas>();
+            pauseCanvas.enabled = true;
+
+        }
+        else if(Time.timeScale == 0.0f)
+        {
+            scene.gamePause = false;
+            Time.timeScale = 1.0f;
+
+            Canvas pauseCanvas = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<Canvas>();
+            pauseCanvas.enabled = false;
+        }
+        
+    }
 
 	// Use this for initialization
 	void Start () {

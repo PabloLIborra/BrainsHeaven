@@ -8,6 +8,12 @@ TagManager:
   - Form
   - Background
   - Draw
+  - VictoryCanvas
+  - DefeatCanvas
+  - FlashRed
+  - FlashGreen
+  - PauseCanvas
+  - TimeBar
   layers:
   - Default
   - TransparentFX
