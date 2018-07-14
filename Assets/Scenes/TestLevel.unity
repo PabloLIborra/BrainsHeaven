@@ -813,6 +813,7 @@ MonoBehaviour:
   - circulo
   percentageForm: 210000002100000022000000
   percentageRepetition: 000000000000000000000000
+  guide: {fileID: 49873199}
   normalPercentage: 50
   nextPercentage: 50
   countCorrectForm: 0
