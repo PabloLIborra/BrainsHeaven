@@ -5,9 +5,61 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class MenuManager : MonoBehaviour {
-	//Save data class
-
 	
+	public string firstLevel; 	//First level
+	public string mainMenu; 	//Main menu
+	public string selectLevel;  //Screen of level selection
+
+	//Init Game
+	public void StartGame()
+	{
+		//Load the first level
+		UnityEngine.SceneManagement.SceneManager.LoadScene( firstLevel );
+
+	}
+
+	//Go back to main menu
+	public void MainMenu()
+	{
+		//Load the main menu
+		UnityEngine.SceneManagement.SceneManager.LoadScene( mainMenu );
+	}
+
+	//Load selection level
+	public void LoadSelectScene()
+	{
+		//Load the main menu
+		UnityEngine.SceneManagement.SceneManager.LoadScene( selectLevel );
+	}
+
+	//Load fixed level
+	public void LoadLevel()
+	{
+		//Load the main menu
+		Transform t = transform.Find("Text");
+		UnityEngine.UI.Text text_canvas = t.GetComponent<UnityEngine.UI.Text>();
+		string inner_text = text_canvas.text;
+		UnityEngine.SceneManagement.SceneManager.LoadScene( int.Parse(inner_text) );
+	}
+
+	//Next level
+	public void NextLevel()
+	{
+		//Load the next scene
+		UnityEngine.SceneManagement.SceneManager.LoadScene(
+							UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex +1
+							);
+	}
+
+	//Exit game
+	public void QuitGame()
+	{
+		//Quit the scene
+		Application.Quit();
+	}
+
+
+	//Save the game
 	public void SaveGame(){
 		//Open File
 		BinaryFormatter bf = new BinaryFormatter();
@@ -23,6 +75,7 @@ public class MenuManager : MonoBehaviour {
 
 	}
 
+	//Load the game
 	public void loadGame()
 	{
 		//Check if file exists
@@ -57,6 +110,7 @@ public class MenuManager : MonoBehaviour {
 	
 }
 
+//Save data class
 [System.Serializable]
 class SaveData
 {
