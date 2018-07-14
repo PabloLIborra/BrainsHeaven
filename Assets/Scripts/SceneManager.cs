@@ -10,6 +10,8 @@ public class SceneManager : MonoBehaviour {
     public List<int> percentageForm = new List<int>();
     public List<int> percentageRepetition = new List<int>();
 
+    public GameObject guide;
+
     public int normalPercentage = 100;
     public int nextPercentage = 0;
 
@@ -182,11 +184,11 @@ public class SceneManager : MonoBehaviour {
         int rand;
         int type = chooseType();
 
-        if(gesture == formCheck)
+
+        if (gesture == formCheck)
         {
             
             generateNewRandomForm();
-            changeImgForm(type);
             flashImage(true);
             countCorrectForm++;
         }
@@ -196,7 +198,6 @@ public class SceneManager : MonoBehaviour {
         if (gesture == formCheck)
         {
             generateNewRandomForm();
-            changeImgForm(type);
             flashImage(true);
             countCorrectForm++;
         }
@@ -217,15 +218,23 @@ public class SceneManager : MonoBehaviour {
             changeImgForm(type);
             flashImage(false);
         }
+        if (type == 1)
+        {
+            form = guide.GetComponent<GuideManager>().GetNext(form);
+        }
     }
 
     public void changeImgForm(int type)
     {
         Image imageForm = GameObject.FindGameObjectWithTag("Form").GetComponent<Image>();
-        string matForm = "Materials/" + form + "Form";
+        string matForm = form;
+        if (type == 1)
+        {
+            matForm += "B";
+        }
 
-        Material mat = Resources.Load(matForm, typeof(Material)) as Material;
-        imageForm.material = mat;
+        Sprite mat = Resources.Load(matForm, typeof(Sprite)) as Sprite;
+        imageForm.sprite = mat;
 
     }
 
