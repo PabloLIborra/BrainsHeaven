@@ -56,7 +56,7 @@ public class GestureScript : MonoBehaviour {
         }
 
         SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
-        if (drawArea.Contains(virtualKeyPosition) && scene.playing)
+        if (drawArea.Contains(virtualKeyPosition) && scene.playing && !scene.gamePause)
         {
             if (Input.GetMouseButtonDown(0))
             {

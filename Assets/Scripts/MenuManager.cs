@@ -106,6 +106,31 @@ public class MenuManager : MonoBehaviour {
 		}
 	}
 
+    //Pause Menu
+    public void PauseGame()
+    {
+        SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
+
+        if(Time.timeScale > 0.0f)
+        {
+            scene.gamePause = true;
+            Time.timeScale = 0.0f;
+
+            Canvas pauseCanvas = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<Canvas>();
+            pauseCanvas.enabled = true;
+
+        }
+        else if(Time.timeScale == 0.0f)
+        {
+            scene.gamePause = false;
+            Time.timeScale = 1.0f;
+
+            Canvas pauseCanvas = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<Canvas>();
+            pauseCanvas.enabled = false;
+        }
+        
+    }
+
 	// Use this for initialization
 	void Start () {
 		

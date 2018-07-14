@@ -12,6 +12,7 @@ TagManager:
   - DefeatCanvas
   - FlashRed
   - FlashGreen
+  - PauseCanvas
   layers:
   - Default
   - TransparentFX

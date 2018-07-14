@@ -21,6 +21,8 @@ public class SceneManager : MonoBehaviour {
     bool flashActive = false;
     public float transitionFlash = 0.2f;
 
+    public bool gamePause = false;
+
 	// Use this for initialization
 	void Start () {
 
