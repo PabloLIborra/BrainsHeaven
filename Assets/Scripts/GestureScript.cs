@@ -55,9 +55,9 @@ public class GestureScript : MonoBehaviour {
             }
         }
 
-        if (drawArea.Contains(virtualKeyPosition))
+        SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
+        if (drawArea.Contains(virtualKeyPosition) && scene.playing)
         {
-
             if (Input.GetMouseButtonDown(0))
             {
 
@@ -95,7 +95,6 @@ public class GestureScript : MonoBehaviour {
                 Gesture candidate = new Gesture(points.ToArray());
                 Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 
-                SceneManager scene = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>();
                 scene.checkGesture(gestureResult.GestureClass);
 
                 points.Clear();
@@ -113,8 +112,19 @@ public class GestureScript : MonoBehaviour {
             {
                 points.Add(new Point(virtualKeyPosition.x, -virtualKeyPosition.y, strokeId));
 
+                var back = GameObject.FindGameObjectWithTag("Background");
+
                 currentGestureLineRenderer.SetVertexCount(++vertexCount);
                 currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
+
+                
+
+                //currentGestureLineRenderer.transform.parent = GameObject.FindGameObjectWithTag("Background").transform;
+                currentGestureLineRenderer.sortingOrder = 0;
+                string matForm = "Materials/a";
+
+                Material mat = Resources.Load(matForm, typeof(Material)) as Material;
+                currentGestureLineRenderer.material = mat;
             }
         }
     }
