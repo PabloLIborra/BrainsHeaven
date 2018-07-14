@@ -23,7 +23,8 @@ public class MenuManager : MonoBehaviour {
 	{
 		//Load the main menu
 		UnityEngine.SceneManagement.SceneManager.LoadScene( mainMenu );
-	}
+        Time.timeScale = 1.0f;
+    }
 
 	//Load selection level
 	public void LoadSelectScene()
@@ -58,7 +59,7 @@ public class MenuManager : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene(
 							UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex +1
 							);
-	}
+    }
 
 	//Exit game
 	public void QuitGame()

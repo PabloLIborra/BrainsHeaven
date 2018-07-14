@@ -24,7 +24,7 @@ public class SceneManager : MonoBehaviour {
 
     //Flash Image
     float flashTime = 0.0f;
-    bool flashActive = false;
+    public bool flashActive = false;
     public float transitionFlash = 0.2f;
 
     public bool gamePause = false;
@@ -109,7 +109,9 @@ public class SceneManager : MonoBehaviour {
         //Check Time Flash Image
         if(flashActive)
         {
-            if(flashTime - timeleft >= transitionFlash)
+            Debug.Log(flashTime);
+            Debug.Log(timeleft);
+            if (flashTime - timeleft >= transitionFlash)
             {
                 Image flashImg;
                 flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
@@ -183,18 +185,18 @@ public class SceneManager : MonoBehaviour {
 
     public void checkGesture(string gesture)
     {
-
         string formCheck = form + "Der";
         int rand;
         int type = chooseType();
+        bool enter = false;
 
 
         if (gesture == formCheck)
         {
-            
             generateNewRandomForm();
             flashImage(true);
             countCorrectForm++;
+            enter = true;
         }
 
         formCheck = form + "Izq";
@@ -204,9 +206,37 @@ public class SceneManager : MonoBehaviour {
             generateNewRandomForm();
             flashImage(true);
             countCorrectForm++;
+            enter = true;
         }
 
-        if(countCorrectForm == numCorrectFormToGetRight)
+        if(enter == false && (form == "v" || form == "a" || form == "circulo"))
+        {
+
+            for (int i = 0; i < 8; i++)
+            {
+                formCheck = form + (i+1) + "Der";
+
+                if (gesture == formCheck)
+                {
+                    generateNewRandomForm();
+                    flashImage(true);
+                    countCorrectForm++;
+                    enter = true;
+                }
+                
+                formCheck = form + (i + 1) + "Izq";
+
+                if (gesture == formCheck)
+                {
+                    generateNewRandomForm();
+                    flashImage(true);
+                    countCorrectForm++;
+                    enter = true;
+                }
+            }
+        }
+
+        if (countCorrectForm == numCorrectFormToGetRight)
         {
             playing = false;
 
@@ -224,8 +254,8 @@ public class SceneManager : MonoBehaviour {
         }
         if (type == 1)
         {
+            //guide.GetComponent<GuideManager>().ChangeClockwise();
             form = guide.GetComponent<GuideManager>().GetNext(form);
-            guide.GetComponent<GuideManager>().ChangeClockwise();
         }
     }
 
