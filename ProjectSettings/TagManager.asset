@@ -15,6 +15,7 @@ TagManager:
   - PauseCanvas
   - TimeBar
   - MusicManager
+  - GuideTextBox
   layers:
   - Default
   - TransparentFX

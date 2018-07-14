@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GuideManager : MonoBehaviour {
     public List<string> guide = new List<string>();
@@ -33,6 +34,7 @@ public class GuideManager : MonoBehaviour {
 
     public string GetNext(string s)
     {
+        Debug.Log("Pide siguiente");
         bool found = false;
         int position = -1;
         for (int i = 0; i < guide.Count && !found; i++)
@@ -45,6 +47,7 @@ public class GuideManager : MonoBehaviour {
         }
         if(clockwise)
         {
+            Debug.Log("Es clockwise");
             if(position == guide.Count -1)
             {
                 return guide[0];
@@ -56,6 +59,7 @@ public class GuideManager : MonoBehaviour {
         }
         else
         {
+            Debug.Log("Es anticlockwise");
             if(position == 0)
             {
                 return guide[guide.Count - 1];
@@ -75,10 +79,20 @@ public class GuideManager : MonoBehaviour {
             if (clockwise)
             {
                 arrows[i].GetComponent<SpriteRenderer>().sprite = Resources.Load("Arrow", typeof(Sprite)) as Sprite;
+                Image guideTextBox = GameObject.FindGameObjectWithTag("GuideTextBox").GetComponent<Image>();
+                if(guideTextBox.enabled == true)
+                {
+                    guideTextBox.enabled = false;
+                }
             }
             else
             {
                 arrows[i].GetComponent<SpriteRenderer>().sprite = Resources.Load("Arrowcc", typeof(Sprite)) as Sprite;
+                Image guideTextBox = GameObject.FindGameObjectWithTag("GuideTextBox").GetComponent<Image>();
+                if (guideTextBox.enabled == false)
+                {
+                    guideTextBox.enabled = true;
+                }
             }
         }
     }
