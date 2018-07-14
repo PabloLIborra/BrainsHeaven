@@ -8,6 +8,10 @@ TagManager:
   - Form
   - Background
   - Draw
+  - VictoryCanvas
+  - DefeatCanvas
+  - FlashRed
+  - FlashGreen
   layers:
   - Default
   - TransparentFX
