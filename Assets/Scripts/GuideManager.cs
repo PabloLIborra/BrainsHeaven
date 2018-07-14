@@ -10,12 +10,25 @@ public class GuideManager : MonoBehaviour {
     bool clockwise = true;
 	// Use this for initialization
 	void Start () {
-		
+		for(int i = 0; i < guide.Count; i++)
+        {
+            string route = guide[i] + "Mini";
+            references[i].GetComponent<SpriteRenderer>().sprite = Resources.Load(route, typeof(Sprite)) as Sprite;
+
+            if(clockwise)
+            {
+                arrows[i].GetComponent<SpriteRenderer>().sprite = Resources.Load("Arrow", typeof(Sprite)) as Sprite;
+            }
+            else
+            {
+                arrows[i].GetComponent<SpriteRenderer>().sprite = Resources.Load("Arrowcc", typeof(Sprite)) as Sprite;
+            }
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
     public string GetNext(string s)
@@ -57,5 +70,16 @@ public class GuideManager : MonoBehaviour {
     public void ChangeClockwise()
     {
         clockwise = !clockwise;
+        for(int i = 0; i < arrows.Count; i++)
+        {
+            if (clockwise)
+            {
+                arrows[i].GetComponent<SpriteRenderer>().sprite = Resources.Load("Arrow", typeof(Sprite)) as Sprite;
+            }
+            else
+            {
+                arrows[i].GetComponent<SpriteRenderer>().sprite = Resources.Load("Arrowcc", typeof(Sprite)) as Sprite;
+            }
+        }
     }
 }
