@@ -110,7 +110,7 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
-    public bool checkGesture(string gesture)
+    public void checkGesture(string gesture)
     {
 
         string formCheck = form + "Der";
@@ -120,8 +120,6 @@ public class SceneManager : MonoBehaviour {
         {
             generateNewRandomForm();
             countCorrectForm++;
-
-            return true;
         }
 
         formCheck = form + "Izq";
@@ -131,8 +129,6 @@ public class SceneManager : MonoBehaviour {
             generateNewRandomForm();
 
             countCorrectForm++;
-
-            return true;
         }
 
         if(countCorrectForm == numCorrectFormToGetRight)
@@ -144,6 +140,5 @@ public class SceneManager : MonoBehaviour {
         {
             generateNewRandomForm();
         }
-        return false;
     }
 }
