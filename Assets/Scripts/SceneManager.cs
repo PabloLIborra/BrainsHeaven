@@ -15,6 +15,12 @@ public class SceneManager : MonoBehaviour {
 
     public float timeleft = 20.0f;
     public bool playing;
+
+    //Flash Image
+    float flashTime = 0.0f;
+    bool flashActive = false;
+    public float transitionFlash = 0.2f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -68,18 +74,47 @@ public class SceneManager : MonoBehaviour {
         changeImgForm();
 
         playing = true;
-
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-        timeleft -= Time.deltaTime;
-        if(timeleft < 0)
+
+        if(playing == true)
         {
-            Debug.Log(timeleft);
-            //Call lose event;
-            playing = false;
+            timeleft -= Time.deltaTime;
         }
+        if(timeleft < 0 && playing == true)
+        {
+            playing = false;
+
+            GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
+            imageForm.SetActive(false);
+
+            Canvas defeat = GameObject.FindGameObjectWithTag("DefeatCanvas").GetComponent<Canvas>();
+            defeat.enabled = true;
+        }
+
+        //Check Time Flash Image
+        if(flashActive)
+        {
+            if(flashTime - timeleft >= transitionFlash)
+            {
+                Image flashImg;
+                flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+                if(flashImg.enabled == true)
+                {
+                    flashImg.enabled = false;
+                }
+
+                flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+                if (flashImg.enabled == true)
+                {
+                    flashImg.enabled = false;
+                }
+            }
+        }
+
 	}
 
     void generateNewRandomForm()
@@ -126,6 +161,7 @@ public class SceneManager : MonoBehaviour {
             
             generateNewRandomForm();
             changeImgForm();
+            flashImage(true);
             countCorrectForm++;
         }
 
@@ -135,18 +171,25 @@ public class SceneManager : MonoBehaviour {
         {
             generateNewRandomForm();
             changeImgForm();
+            flashImage(true);
             countCorrectForm++;
         }
 
         if(countCorrectForm == numCorrectFormToGetRight)
         {
             playing = false;
-            //Here is your winning function
+
+            GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
+            imageForm.SetActive(false);
+          
+            Canvas victory = GameObject.FindGameObjectWithTag("VictoryCanvas").GetComponent<Canvas>();
+            victory.enabled = true;
         }
         else
         {
             generateNewRandomForm();
             changeImgForm();
+            flashImage(false);
         }
     }
 
@@ -159,4 +202,24 @@ public class SceneManager : MonoBehaviour {
         imageForm.material = mat;
 
     }
+
+    public void flashImage(bool flash)
+    {
+        Image flashImg;
+        if (flash)
+        {
+            flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+            flashImg.enabled = true;
+            flashTime = timeleft;
+            flashActive = true;
+        }
+        else
+        {
+            flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+            flashImg.enabled = true;
+            flashTime = timeleft;
+            flashActive = true;
+        }
+    }
+
 }

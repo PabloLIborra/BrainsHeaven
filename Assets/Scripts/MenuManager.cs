@@ -42,8 +42,17 @@ public class MenuManager : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene( int.Parse(inner_text) );
 	}
 
-	//Next level
-	public void NextLevel()
+    //Try Again level
+    public void TryAgainLevel()
+    {
+        //Load the next scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+                            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+                            );
+    }
+
+    //Next level
+    public void NextLevel()
 	{
 		//Load the next scene
 		UnityEngine.SceneManagement.SceneManager.LoadScene(
