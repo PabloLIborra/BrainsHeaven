@@ -10,6 +10,9 @@ public class SceneManager : MonoBehaviour {
     public List<int> percentageForm = new List<int>();
     public List<int> percentageRepetition = new List<int>();
 
+    public int normalPercentage = 100;
+    public int nextPercentage = 0;
+
     public int countCorrectForm = 0;
     public int numCorrectFormToGetRight = 10;
 
@@ -76,7 +79,7 @@ public class SceneManager : MonoBehaviour {
         int rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
-        changeImgForm();
+        changeImgForm(0);
 
         playing = true;
         
@@ -156,17 +159,38 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
+    //This is going to be the worst method I've ever written
+    int chooseType()
+    {
+        int rand = Random.Range(0, 100);
+        if(rand <= normalPercentage)
+        {
+            return 0;
+        }
+        else
+        {
+            rand -= normalPercentage;
+        }
+        if(rand <= nextPercentage)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+
     public void checkGesture(string gesture)
     {
 
         string formCheck = form + "Der";
         int rand;
+        int type = chooseType();
 
         if(gesture == formCheck)
         {
             
             generateNewRandomForm();
-            changeImgForm();
+            changeImgForm(type);
             flashImage(true);
             countCorrectForm++;
         }
@@ -176,7 +200,7 @@ public class SceneManager : MonoBehaviour {
         if (gesture == formCheck)
         {
             generateNewRandomForm();
-            changeImgForm();
+            changeImgForm(type);
             flashImage(true);
             countCorrectForm++;
         }
@@ -194,12 +218,12 @@ public class SceneManager : MonoBehaviour {
         else
         {
             generateNewRandomForm();
-            changeImgForm();
+            changeImgForm(type);
             flashImage(false);
         }
     }
 
-    public void changeImgForm()
+    public void changeImgForm(int type)
     {
         Image imageForm = GameObject.FindGameObjectWithTag("Form").GetComponent<Image>();
         string matForm = "Materials/" + form + "Form";
