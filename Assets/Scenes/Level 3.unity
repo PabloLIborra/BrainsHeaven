@@ -804,9 +804,10 @@ MonoBehaviour:
   nextPercentage: 0
   countCorrectForm: 0
   numCorrectFormToGetRight: 10
-  timeleft: 11
-  timeleftMax: 11
+  timeleft: 10
+  timeleftMax: 10
   playing: 0
+  flashActive: 0
   transitionFlash: 0.3
   gamePause: 0
 --- !u!114 &493140907
