@@ -814,7 +814,7 @@ MonoBehaviour:
   normalPercentage: 0
   nextPercentage: 100
   countCorrectForm: 0
-  numCorrectFormToGetRight: 10
+  numCorrectFormToGetRight: 1
   timeleft: 10000
   timeleftMax: 10000
   playing: 0
