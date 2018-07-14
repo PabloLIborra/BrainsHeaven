@@ -8,7 +8,7 @@ public class TutorialAnimations : MonoBehaviour {
 	// Time for the tutorial to show up
 	public float remaining_time;
 	public float fade_duration;
-	public float final_fade_duration = 1.0f;
+	public float final_fade_duration = 0.6f;
 	bool destroy_this;
 
 	// Use this for initialization
@@ -25,7 +25,7 @@ public class TutorialAnimations : MonoBehaviour {
 	void Update () {
 		remaining_time -= Time.deltaTime;
 
-		if(remaining_time < fade_duration){
+		if(remaining_time < fade_duration && !destroy_this){
 			gameObject.GetComponent<Image>().CrossFadeColor(
 				new Color(gameObject.GetComponent<Image>().color.r,
 						  gameObject.GetComponent<Image>().color.g,
@@ -57,7 +57,7 @@ public class TutorialAnimations : MonoBehaviour {
 						  gameObject.GetComponent<Image>().color.g,
 						  gameObject.GetComponent<Image>().color.b,
 						  0)
-						  , 0.1f, false, true);
+						  , final_fade_duration, false, true);
 			destroy_this = true;
 	}
 }
