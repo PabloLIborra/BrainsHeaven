@@ -118,12 +118,18 @@ public class SceneManager : MonoBehaviour {
                 if(flashImg.enabled == true)
                 {
                     flashImg.enabled = false;
+
+                    //Play music of asserting the thingy
+                    GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayCorrect();
                 }
 
                 flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
                 if (flashImg.enabled == true)
                 {
                     flashImg.enabled = false;
+
+                    //Play music of failing the thingy
+                    GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayError();
                 }
             }
         }
