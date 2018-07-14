@@ -115,7 +115,7 @@ public class GestureScript : MonoBehaviour {
                 var back = GameObject.FindGameObjectWithTag("Background");
 
                 currentGestureLineRenderer.SetVertexCount(++vertexCount);
-                currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
+                currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 1)));
 
                 
 
