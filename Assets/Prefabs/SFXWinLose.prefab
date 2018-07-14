@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1062022772455594}
+  m_IsPrefabParent: 1
+--- !u!1 &1062022772455594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4331442263262082}
+  - component: {fileID: 114510591914112174}
+  m_Layer: 0
+  m_Name: SFXWinLose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4331442263262082
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062022772455594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114510591914112174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062022772455594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505272e86d18d1440bfaec25834c0ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corrects:
+  - {fileID: 8300000, guid: 90e203ca47f06384698b4a0030a5e600, type: 3}
+  - {fileID: 8300000, guid: bf33e1c02344de045a16095a9d5c3636, type: 3}
+  - {fileID: 8300000, guid: c7af3586c066b0c4b87d5e0c2b3a10dc, type: 3}
+  - {fileID: 8300000, guid: cf68d84a90e932842a07b938567a4d94, type: 3}
+  - {fileID: 8300000, guid: b608d3490a66a5845b0ce6ca830962c0, type: 3}
+  - {fileID: 8300000, guid: 00f2a382e0647d148a5ec1b4de06d8a1, type: 3}
+  - {fileID: 8300000, guid: 754844424ebbae54986f4ad1a4ac8f14, type: 3}
+  - {fileID: 8300000, guid: 9a9119a0fa6be5e4fb36628c6af4e849, type: 3}
+  - {fileID: 8300000, guid: 4b81217341343724f94d0b8450335eee, type: 3}
+  - {fileID: 8300000, guid: 8778a69a47d73bf4299acd1882ced538, type: 3}
+  - {fileID: 8300000, guid: 6937b8e940777e7429f5dacacf7826d6, type: 3}
+  - {fileID: 8300000, guid: 04894b5a7e586ef409c6151a86839cdb, type: 3}
+  - {fileID: 8300000, guid: 70fd66dc0a2468a468bc0ed94b6132f3, type: 3}
+  - {fileID: 8300000, guid: 6d9e84dfbe11f1240aa690ead6145e07, type: 3}
+  - {fileID: 8300000, guid: b677916483c3fa1428220045df0e8158, type: 3}
+  - {fileID: 8300000, guid: 1b21a50ea14c1fb429d762bc52ac087b, type: 3}
+  correct_index: 0
+  errors:
+  - {fileID: 8300000, guid: 099e51f8dc048d642b16548f51df52d1, type: 3}
+  - {fileID: 8300000, guid: 794119c5b8af5694aa783cbd4fba157c, type: 3}
+  - {fileID: 8300000, guid: c108b1fd30338654da9cfc07971ab768, type: 3}
+  - {fileID: 8300000, guid: 7eee0413683bc9a4a8e0817cb2de78c1, type: 3}
+  - {fileID: 8300000, guid: 4c4d58ae377cb0547bde6205b972be63, type: 3}
+  - {fileID: 8300000, guid: 8003af0915b47164aaeb03c5fa14a587, type: 3}
+  - {fileID: 8300000, guid: 17af7ab33bf43cd49a1af1354ede551a, type: 3}
+  - {fileID: 8300000, guid: 8039487fb6ec35e4483bca7a67a696e9, type: 3}
+  - {fileID: 8300000, guid: fe6f6a8152c39724e99276ed4ff4ac61, type: 3}
+  - {fileID: 8300000, guid: 141ccee3bb572264abaad149d4ab5149, type: 3}
+  - {fileID: 8300000, guid: 4e76d8c7a15686844ac83c24028c7450, type: 3}
+  - {fileID: 8300000, guid: c9aef6741410bca4989af362da51190e, type: 3}
+  - {fileID: 8300000, guid: 79d14c23d0b82a24d91521d00e4ff900, type: 3}
+  - {fileID: 8300000, guid: 9317d2432b5107543b05ae6a18004469, type: 3}
+  - {fileID: 8300000, guid: 1ccee9c8b8b5d824f87a88b935d8cca6, type: 3}
+  - {fileID: 8300000, guid: 2ee1e01f7c7085b468ad50df8f6f76dc, type: 3}
+  error_index: 0
+  music:
+  - {fileID: 8300000, guid: 113f6a73277983640ab8ada21dacc368, type: 3}
+  - {fileID: 8300000, guid: dfad490e43a5df44fb4d211c1bd4e834, type: 3}
+  - {fileID: 8300000, guid: d1e49649505e0244299266fe2dd19350, type: 3}
+  - {fileID: 8300000, guid: 707c20f119067ac4ebb9356332fbe6a2, type: 3}
+  - {fileID: 8300000, guid: 09df2fc71a637b147aae468d498d98e8, type: 3}
+  music_index: 0
+  sound_source: {fileID: 0}
+  music_source: {fileID: 0}
+  fade_out_trigger: {fileID: 0}
+  fade_in_trigger: {fileID: 0}
+  bpm: 140
