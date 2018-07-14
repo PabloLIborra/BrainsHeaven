@@ -12,6 +12,8 @@ public class SceneManager : MonoBehaviour {
 
     public GameObject guide;
 
+    public bool bluetutorial = false;
+
     public int normalPercentage = 100;
     public int nextPercentage = 0;
 
@@ -81,7 +83,14 @@ public class SceneManager : MonoBehaviour {
         int rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
-        changeImgForm(0);
+        if(bluetutorial)
+        {
+            changeImgForm(1);
+        }
+        else
+        {
+            changeImgForm(0);
+        }
 
         playing = true;
         
