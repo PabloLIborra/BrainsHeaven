@@ -14,6 +14,7 @@ public class SceneManager : MonoBehaviour {
     public int numCorrectFormToGetRight = 10;
 
     public float timeleft = 20.0f;
+    public float timeleftMax = 20.0f;
     public bool playing;
 
     //Flash Image
@@ -25,6 +26,8 @@ public class SceneManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        timeleft = timeleftMax;
 
 		if(typeForms.Count == 0)
         {
@@ -81,10 +84,11 @@ public class SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         if(playing == true)
         {
             timeleft -= Time.deltaTime;
+            updateTimeBar();
         }
         if(timeleft < 0 && playing == true)
         {
@@ -222,6 +226,13 @@ public class SceneManager : MonoBehaviour {
             flashTime = timeleft;
             flashActive = true;
         }
+    }
+
+    public void updateTimeBar()
+    {
+        Scrollbar scrollTime = GameObject.FindGameObjectWithTag("TimeBar").GetComponent<Scrollbar>();
+
+        scrollTime.size = timeleft / timeleftMax;
     }
 
 }
