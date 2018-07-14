@@ -34,6 +34,7 @@ public class GuideManager : MonoBehaviour {
 
     public string GetNext(string s)
     {
+        Debug.Log("Pide siguiente");
         bool found = false;
         int position = -1;
         for (int i = 0; i < guide.Count && !found; i++)
@@ -46,6 +47,7 @@ public class GuideManager : MonoBehaviour {
         }
         if(clockwise)
         {
+            Debug.Log("Es clockwise");
             if(position == guide.Count -1)
             {
                 return guide[0];
@@ -57,6 +59,7 @@ public class GuideManager : MonoBehaviour {
         }
         else
         {
+            Debug.Log("Es anticlockwise");
             if(position == 0)
             {
                 return guide[guide.Count - 1];
