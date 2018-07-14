@@ -225,6 +225,7 @@ public class SceneManager : MonoBehaviour {
         if (type == 1)
         {
             form = guide.GetComponent<GuideManager>().GetNext(form);
+            guide.GetComponent<GuideManager>().ChangeClockwise();
         }
     }
 

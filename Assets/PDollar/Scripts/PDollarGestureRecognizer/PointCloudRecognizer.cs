@@ -90,8 +90,14 @@ namespace PDollarGestureRecognizer
                     gestureClass = template.Name;
                 }
             }
+            float score = Mathf.Max((minDistance - 2.0f) / -2.0f, 0.0f);
 
-			return gestureClass == "" ? new Result() {GestureClass = "No match", Score = 0.0f} : new Result() {GestureClass = gestureClass, Score = Mathf.Max((minDistance - 2.0f) / -2.0f, 0.0f)};
+            if (score < 0.75) //Range to classify gesture like "Invalid"
+            {
+                return gestureClass == "" ? new Result() { GestureClass = "No match", Score = 0.0f } : new Result() { GestureClass = "Invalid", Score = score };
+            }
+
+            return gestureClass == "" ? new Result() {GestureClass = "No match", Score = 0.0f} : new Result() {GestureClass = gestureClass, Score = score};
         }
 
         /// <summary>
