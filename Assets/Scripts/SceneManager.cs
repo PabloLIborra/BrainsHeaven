@@ -12,6 +12,8 @@ public class SceneManager : MonoBehaviour {
 
     public GameObject guide;
 
+    public bool bluetutorial = false;
+
     public int normalPercentage = 100;
     public int nextPercentage = 0;
 
@@ -81,7 +83,15 @@ public class SceneManager : MonoBehaviour {
         int rand = Random.Range(0, typeForms.Count);
 
         form = typeForms[rand];
-        changeImgForm(0);
+        if(bluetutorial)
+        {
+            changeImgForm(1);
+            form = guide.GetComponent<GuideManager>().GetNext(form);
+        }
+        else
+        {
+            changeImgForm(0);
+        }
 
         playing = true;
         
@@ -119,8 +129,6 @@ public class SceneManager : MonoBehaviour {
                 {
                     flashImg.enabled = false;
 
-                    //Play music of asserting the thingy
-                    GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayCorrect();
                 }
 
                 flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
@@ -128,8 +136,6 @@ public class SceneManager : MonoBehaviour {
                 {
                     flashImg.enabled = false;
 
-                    //Play music of failing the thingy
-                    GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayError();
                 }
             }
         }
@@ -255,7 +261,7 @@ public class SceneManager : MonoBehaviour {
         else
         {
             generateNewRandomForm();
-            changeImgForm(type);
+            changeImgForm(type);    
             flashImage(false);
         }
         if (type == 1)

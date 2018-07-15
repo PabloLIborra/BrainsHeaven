@@ -800,12 +800,13 @@ MonoBehaviour:
   percentageForm: 210000002100000022000000
   percentageRepetition: 000000000000000000000000
   guide: {fileID: 49873199}
+  bluetutorial: 0
   normalPercentage: 100
   nextPercentage: 0
   countCorrectForm: 0
   numCorrectFormToGetRight: 10
-  timeleft: 10
-  timeleftMax: 10
+  timeleft: 12
+  timeleftMax: 12
   playing: 0
   flashActive: 0
   transitionFlash: 0.3
