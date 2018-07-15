@@ -254,9 +254,19 @@ public class SceneManager : MonoBehaviour {
 
             GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
             imageForm.SetActive(false);
-          
+
             Canvas victory = GameObject.FindGameObjectWithTag("VictoryCanvas").GetComponent<Canvas>();
             victory.enabled = true;
+            Button nextB = GameObject.Find("NextLevel").GetComponent<Button>();
+            if (nextB.interactable == true)
+            {
+                if(gameObject.GetComponent<MenuManager>().checkLevelSaved() <= 
+                                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex)
+                {
+                    gameObject.GetComponent<MenuManager>().SaveGame();
+                }
+                
+            }
         }
         else
         {
