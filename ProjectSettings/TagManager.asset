@@ -18,6 +18,7 @@ TagManager:
   - GuideTextBox
   - SelectCanvas
   - Card
+  - LevelButton
   layers:
   - Default
   - TransparentFX
