@@ -16,7 +16,7 @@ public class Win_End : MonoBehaviour {
 		int current_done = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().countCorrectForm;
 		int goal         = GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().numCorrectFormToGetRight;
 
-		gameObject.GetComponent<Text>().text = current_done +"/"+ goal;
+		gameObject.GetComponent<Text>().text = current_done +" / "+ goal;
 	}
 
 
