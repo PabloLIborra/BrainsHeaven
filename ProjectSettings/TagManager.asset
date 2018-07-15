@@ -19,6 +19,7 @@ TagManager:
   - SelectCanvas
   - Card
   - End_Level_Story
+  - LevelButton
   layers:
   - Default
   - TransparentFX
