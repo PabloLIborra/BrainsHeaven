@@ -38,17 +38,20 @@ public class MusicManager : MonoBehaviour {
 		effects_index   = 0;
 		
 		//Add audio sources
-		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		/*GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
 		for(int i = 0; i < corrects.Length; i++)
 		{
 			AudioSource a  = camera.AddComponent<AudioSource>();
 			sound_source.Add(a);
-		}
+		}*/
 
 		//Variables maybe we won't use
         m_QuarterNote = 60 / bpm;
         m_TransitionIn = m_QuarterNote;
         m_TransitionOut = m_QuarterNote * 32;
+
+		//Play music
+		PlayMusic();
 
     }
 

@@ -21,9 +21,10 @@ public class TutorialAnimations : MonoBehaviour {
 		
 		//Check if it has image
 		GameObject.FindGameObjectWithTag("Form").GetComponent<Image>().enabled = false;
+        GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().gamePause = true;
 
-		//Don't destroy this
-		destroy_this = false;
+        //Don't destroy this
+        destroy_this = false;
 		
         GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().storytelling = true;
     }
@@ -51,7 +52,8 @@ public class TutorialAnimations : MonoBehaviour {
 			//Check if it has image
 			GameObject.FindGameObjectWithTag("Form").GetComponent<Image>().enabled = true;
         	GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().storytelling = false;
-			GameObject.Destroy(gameObject.transform.parent.gameObject);
+            GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().gamePause = false;
+            GameObject.Destroy(gameObject.transform.parent.gameObject);
 		}
 	}
 	
