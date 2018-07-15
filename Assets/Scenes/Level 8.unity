@@ -212,7 +212,7 @@ MonoBehaviour:
   - circulo
   - a
   - v
-  - horizontal
+  - vertical
   references:
   - {fileID: 1307320579}
   - {fileID: 1307320578}
@@ -810,17 +810,18 @@ MonoBehaviour:
   - circulo
   - a
   - v
-  - horizontal
+  - vertical
   percentageForm: 16000000160000001600000022000000
   percentageRepetition: 00000000000000000000000014000000
   guide: {fileID: 49873199}
   bluetutorial: 0
   normalPercentage: 60
   nextPercentage: 40
+  previousPercentage: 0
   countCorrectForm: 0
   numCorrectFormToGetRight: 10
-  timeleft: 18
-  timeleftMax: 18
+  timeleft: 17
+  timeleftMax: 17
   playing: 0
   flashActive: 0
   transitionFlash: 0.3
@@ -837,7 +838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstLevel: 
-  mainMenu: InitialScene
   selectLevel: 
 --- !u!1 &538818602
 GameObject:

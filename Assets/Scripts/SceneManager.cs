@@ -12,10 +12,14 @@ public class SceneManager : MonoBehaviour {
 
     public GameObject guide;
 
+    int lastType;
+
     public bool bluetutorial = false;
+    public bool redtutorial = false;
 
     public int normalPercentage = 100;
     public int nextPercentage = 0;
+    public int previousPercentage = 0;
 
     public int countCorrectForm = 0;
     public int numCorrectFormToGetRight = 10;
@@ -88,6 +92,11 @@ public class SceneManager : MonoBehaviour {
             changeImgForm(1);
             form = guide.GetComponent<GuideManager>().GetNext(form);
         }
+        else if(redtutorial)
+        {
+            changeImgForm(2);
+            form = guide.GetComponent<GuideManager>().GetPrevious(form);
+        }
         else
         {
             changeImgForm(0);
@@ -119,8 +128,6 @@ public class SceneManager : MonoBehaviour {
         //Check Time Flash Image
         if(flashActive)
         {
-            Debug.Log(flashTime);
-            Debug.Log(timeleft);
             if (flashTime - timeleft >= transitionFlash)
             {
                 Image flashImg;
@@ -173,6 +180,17 @@ public class SceneManager : MonoBehaviour {
                 pointer++;
             }
         }
+        else
+        {
+            if(lastType == 1)
+            {
+                form = guide.GetComponent<GuideManager>().GetPrevious(form);
+            }
+            if(lastType == 2)
+            {
+                form = guide.GetComponent<GuideManager>().GetNext(form);
+            }
+        }
     }
 
     //This is going to be the worst method I've ever written
@@ -191,6 +209,14 @@ public class SceneManager : MonoBehaviour {
         {
             return 1;
         }
+        else
+        {
+            rand -= nextPercentage;
+        }
+        if(rand <= previousPercentage)
+        {
+            return 2;
+        }
 
         return 0;
     }
@@ -202,6 +228,9 @@ public class SceneManager : MonoBehaviour {
         int type = chooseType();
         bool enter = false;
 
+        lastType = type;
+
+        Debug.Log(gesture);
 
         if (gesture == formCheck)
         {
@@ -278,6 +307,10 @@ public class SceneManager : MonoBehaviour {
         {
             form = guide.GetComponent<GuideManager>().GetNext(form);
         }
+        if(type == 2)
+        {
+            form = guide.GetComponent<GuideManager>().GetPrevious(form);
+        }
     }
 
     public void changeImgForm(int type)
@@ -287,6 +320,10 @@ public class SceneManager : MonoBehaviour {
         if (type == 1)
         {
             matForm += "B";
+        }
+        if(type == 2)
+        {
+            matForm += "R";
         }
 
         Sprite mat = Resources.Load(matForm, typeof(Sprite)) as Sprite;
