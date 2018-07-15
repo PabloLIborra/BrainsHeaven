@@ -16,6 +16,9 @@ TagManager:
   - TimeBar
   - MusicManager
   - GuideTextBox
+  - SelectCanvas1
+  - SelectCanvas2
+  - SelectCanvas
   layers:
   - Default
   - TransparentFX

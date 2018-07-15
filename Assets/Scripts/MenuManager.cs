@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 	
 	public string firstLevel; 	//First level
-	public string mainMenu; 	//Main menu
 	public string selectLevel;  //Screen of level selection
 
 	//Init Game
@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour {
 	public void MainMenu()
 	{
 		//Load the main menu
-		UnityEngine.SceneManagement.SceneManager.LoadScene( mainMenu );
+		UnityEngine.SceneManagement.SceneManager.LoadScene( 0 );
         Time.timeScale = 1.0f;
     }
 
@@ -132,8 +132,75 @@ public class MenuManager : MonoBehaviour {
         
     }
 
-	// Use this for initialization
-	void Start () {
+    public void loadLevelSelect(string lvl)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(lvl);
+    }
+
+    public void NextCanvasLevelSelect()
+    {
+        GameObject[] gameLevel = GameObject.FindGameObjectsWithTag("SelectCanvas");
+        int canvasEnable = 0;
+
+        for (int i = 0; i < gameLevel.Length; i++)
+        {
+            if (gameLevel[i].GetComponent<Canvas>().enabled)
+            {
+                canvasEnable = i;
+                gameLevel[i].GetComponent<Canvas>().enabled = false;
+            }
+        }
+        gameLevel[canvasEnable-1].GetComponent<Canvas>().enabled = true;
+
+        Button next = GameObject.Find("Next").GetComponent<Button>();
+        Button back = GameObject.Find("Back").GetComponent<Button>();
+        
+        if (canvasEnable == 1)
+        {
+            next.interactable = false;
+            back.interactable = true;
+        }
+        else
+        {
+            next.interactable = true;
+            back.interactable = true;
+        }
+    }
+
+    public void BackCanvasLevelSelect()
+    {
+        GameObject[] gameLevel = GameObject.FindGameObjectsWithTag("SelectCanvas");
+        int canvasEnable = 0;
+
+        for (int i = 0; i < gameLevel.Length; i++)
+        {
+            if (gameLevel[i].GetComponent<Canvas>().enabled)
+            {
+                canvasEnable = i;
+                gameLevel[i].GetComponent<Canvas>().enabled = false;
+            }
+        }
+        gameLevel[canvasEnable + 1].GetComponent<Canvas>().enabled = true;
+
+        Button next = GameObject.Find("Next").GetComponent<Button>();
+        Button back = GameObject.Find("Back").GetComponent<Button>();
+
+        Debug.Log(gameLevel.Length);
+        Debug.Log(canvasEnable);
+        if (canvasEnable == gameLevel.Length - 2)
+        {
+            next.interactable = true;
+            back.interactable = false;
+        }
+        else
+        {
+            next.interactable = true;
+            back.interactable = true;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
