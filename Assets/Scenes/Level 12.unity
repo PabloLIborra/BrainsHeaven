@@ -811,17 +811,18 @@ MonoBehaviour:
   - a
   - v
   - vertical
-  percentageForm: 16000000160000001600000022000000
-  percentageRepetition: 00000000000000000000000014000000
+  percentageForm: 19000000190000001900000019000000
+  percentageRepetition: 00000000000000000000000000000000
   guide: {fileID: 49873199}
   bluetutorial: 0
-  normalPercentage: 60
-  nextPercentage: 40
-  previousPercentage: 0
+  redtutorial: 0
+  normalPercentage: 35
+  nextPercentage: 0
+  previousPercentage: 65
   countCorrectForm: 0
-  numCorrectFormToGetRight: 10
-  timeleft: 17
-  timeleftMax: 17
+  numCorrectFormToGetRight: 9
+  timeleft: 16
+  timeleftMax: 16
   playing: 0
   flashActive: 0
   transitionFlash: 0.3
