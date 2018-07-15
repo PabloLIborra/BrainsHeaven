@@ -129,8 +129,6 @@ public class SceneManager : MonoBehaviour {
                 {
                     flashImg.enabled = false;
 
-                    //Play music of asserting the thingy
-                    GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayCorrect();
                 }
 
                 flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
@@ -138,8 +136,6 @@ public class SceneManager : MonoBehaviour {
                 {
                     flashImg.enabled = false;
 
-                    //Play music of failing the thingy
-                    GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayError();
                 }
             }
         }
@@ -293,17 +289,31 @@ public class SceneManager : MonoBehaviour {
         Image flashImg;
         if (flash)
         {
-            flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
-            flashImg.enabled = true;
+            /*flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+            flashImg.enabled = true;*/
             flashTime = timeleft;
             flashActive = true;
+
+             //Play music of asserting the thingy
+            GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayCorrect();
+            
+            //Green card
+            GameObject.FindGameObjectWithTag("Card").GetComponent<WinLosePaper>().GenerateGreenCard();
+                
         }
         else
         {
-            flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
-            flashImg.enabled = true;
+            /*flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+            flashImg.enabled = true;*/
             flashTime = timeleft;
             flashActive = true;
+
+            //Play music of failing the thingy
+            GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayError();
+            
+            //Red card
+            GameObject.FindGameObjectWithTag("Card").GetComponent<WinLosePaper>().GenerateRedCard();
+                
         }
     }
 
