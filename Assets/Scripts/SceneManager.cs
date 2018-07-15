@@ -86,6 +86,7 @@ public class SceneManager : MonoBehaviour {
         if(bluetutorial)
         {
             changeImgForm(1);
+            form = guide.GetComponent<GuideManager>().GetNext(form);
         }
         else
         {
