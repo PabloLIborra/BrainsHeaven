@@ -292,8 +292,8 @@ public class SceneManager : MonoBehaviour {
         Image flashImg;
         if (flash)
         {
-            flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
-            flashImg.enabled = true;
+           /* flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+            flashImg.enabled = true;*/
             flashTime = timeleft;
             flashActive = true;
 
@@ -310,8 +310,8 @@ public class SceneManager : MonoBehaviour {
         }
         else
         {
-            flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
-            flashImg.enabled = true;
+          /*  flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+            flashImg.enabled = true;*/
             flashTime = timeleft;
             flashActive = true;
 

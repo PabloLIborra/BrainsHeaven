@@ -17,11 +17,10 @@ public class WinLosePaper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log("Entra");
 		Debug.Log("COLORINES" + gameObject.GetComponent<Image>().color.g);
 		if(gameObject.GetComponent<Image>().color.a >= 0.99f)
 		{
-			gameObject.GetComponent<Image>().CrossFadeAlpha(0.0f, fade_speed/2.0f, false);
+			gameObject.GetComponent<Image>().CrossFadeAlpha(0.0f, fade_speed* 0.5f, false);
 		}
 
 		/*if(chosen && gameObject.GetComponent<Image>().color.a == 0.0f)
@@ -36,7 +35,7 @@ public class WinLosePaper : MonoBehaviour {
 	{
 		Image a = gameObject.GetComponent<Image>();
 		a.sprite = image_win;
-		a.CrossFadeAlpha(1.0f, fade_speed/2.0f, false);
+		a.CrossFadeAlpha(1.0f, fade_speed * 0.5f, false);
 		
 	}
 
@@ -44,7 +43,7 @@ public class WinLosePaper : MonoBehaviour {
 	{
 		Image a = gameObject.GetComponent<Image>();
 		a.sprite = image_lose;
-		a.CrossFadeAlpha(1.0f, fade_speed/2.0f, false);
+		a.CrossFadeAlpha(1.0f, fade_speed * 0.5f, false);
 	}
 
 }
