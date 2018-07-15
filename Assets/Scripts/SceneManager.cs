@@ -12,10 +12,14 @@ public class SceneManager : MonoBehaviour {
 
     public GameObject guide;
 
+    int lastType;
+
     public bool bluetutorial = false;
+    public bool redtutorial = false;
 
     public int normalPercentage = 100;
     public int nextPercentage = 0;
+    public int previousPercentage = 0;
 
     public int countCorrectForm = 0;
     public int numCorrectFormToGetRight = 10;
@@ -30,6 +34,9 @@ public class SceneManager : MonoBehaviour {
     public float transitionFlash = 0.2f;
 
     public bool gamePause = false;
+
+    //Storytelling beats us all
+    public bool storytelling = false;
 
 	// Use this for initialization
 	void Start () {
@@ -88,6 +95,11 @@ public class SceneManager : MonoBehaviour {
             changeImgForm(1);
             form = guide.GetComponent<GuideManager>().GetNext(form);
         }
+        else if(redtutorial)
+        {
+            changeImgForm(2);
+            form = guide.GetComponent<GuideManager>().GetPrevious(form);
+        }
         else
         {
             changeImgForm(0);
@@ -100,46 +112,46 @@ public class SceneManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if(playing == true)
+        if(!storytelling)
         {
-            timeleft -= Time.deltaTime;
-            updateTimeBar();
-        }
-        if(timeleft < 0 && playing == true)
-        {
-            playing = false;
-
-            GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
-            imageForm.SetActive(false);
-
-            Canvas defeat = GameObject.FindGameObjectWithTag("DefeatCanvas").GetComponent<Canvas>();
-            defeat.enabled = true;
-        }
-
-        //Check Time Flash Image
-        if(flashActive)
-        {
-            Debug.Log(flashTime);
-            Debug.Log(timeleft);
-            if (flashTime - timeleft >= transitionFlash)
+            if(playing == true)
             {
-                Image flashImg;
-                flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
-                if(flashImg.enabled == true)
+                timeleft -= Time.deltaTime;
+                updateTimeBar();
+            }
+            if(timeleft < 0 && playing == true)
+            {
+                playing = false;
+
+                GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
+                imageForm.SetActive(false);
+
+                Canvas defeat = GameObject.FindGameObjectWithTag("DefeatCanvas").GetComponent<Canvas>();
+                defeat.enabled = true;
+            }
+
+            //Check Time Flash Image
+            if(flashActive)
+            {
+                if (flashTime - timeleft >= transitionFlash)
                 {
-                    flashImg.enabled = false;
+                    Image flashImg;
+                    flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+                    if(flashImg.enabled == true)
+                    {
+                        flashImg.enabled = false;
 
-                }
+                    }
 
-                flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
-                if (flashImg.enabled == true)
-                {
-                    flashImg.enabled = false;
+                    flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+                    if (flashImg.enabled == true)
+                    {
+                        flashImg.enabled = false;
 
+                    }
                 }
             }
         }
-
 	}
 
     void generateNewRandomForm()
@@ -173,6 +185,17 @@ public class SceneManager : MonoBehaviour {
                 pointer++;
             }
         }
+        else
+        {
+            if(lastType == 1)
+            {
+                form = guide.GetComponent<GuideManager>().GetPrevious(form);
+            }
+            if(lastType == 2)
+            {
+                form = guide.GetComponent<GuideManager>().GetNext(form);
+            }
+        }
     }
 
     //This is going to be the worst method I've ever written
@@ -191,6 +214,14 @@ public class SceneManager : MonoBehaviour {
         {
             return 1;
         }
+        else
+        {
+            rand -= nextPercentage;
+        }
+        if(rand <= previousPercentage)
+        {
+            return 2;
+        }
 
         return 0;
     }
@@ -202,6 +233,9 @@ public class SceneManager : MonoBehaviour {
         int type = chooseType();
         bool enter = false;
 
+        lastType = type;
+
+        Debug.Log(gesture);
 
         if (gesture == formCheck)
         {
@@ -254,19 +288,33 @@ public class SceneManager : MonoBehaviour {
 
             GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
             imageForm.SetActive(false);
-          
+
             Canvas victory = GameObject.FindGameObjectWithTag("VictoryCanvas").GetComponent<Canvas>();
             victory.enabled = true;
+            Button nextB = GameObject.Find("NextLevel").GetComponent<Button>();
+            if (nextB.interactable == true)
+            {
+                if(gameObject.GetComponent<MenuManager>().checkLevelSaved() <= 
+                                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex)
+                {
+                    gameObject.GetComponent<MenuManager>().SaveGame();
+                }
+                
+            }
         }
         else
         {
             generateNewRandomForm();
-            changeImgForm(type);    
+            changeImgForm(type);
             flashImage(false);
         }
         if (type == 1)
         {
             form = guide.GetComponent<GuideManager>().GetNext(form);
+        }
+        if(type == 2)
+        {
+            form = guide.GetComponent<GuideManager>().GetPrevious(form);
         }
     }
 
@@ -277,6 +325,10 @@ public class SceneManager : MonoBehaviour {
         if (type == 1)
         {
             matForm += "B";
+        }
+        if(type == 2)
+        {
+            matForm += "R";
         }
 
         Sprite mat = Resources.Load(matForm, typeof(Sprite)) as Sprite;

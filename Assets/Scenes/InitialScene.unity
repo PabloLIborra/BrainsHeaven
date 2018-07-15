@@ -604,7 +604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstLevel: Level 1
-  mainMenu: InitialScene
   selectLevel: 
 --- !u!114 &1354091801
 MonoBehaviour:
@@ -1176,7 +1175,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1354091800}
-        m_MethodName: LoadLevel
+        m_MethodName: LoadChooseScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
