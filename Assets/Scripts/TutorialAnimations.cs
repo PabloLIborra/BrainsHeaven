@@ -19,7 +19,8 @@ public class TutorialAnimations : MonoBehaviour {
 
 		//Don't destroy this
 		destroy_this = false;
-	}
+        GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().playing = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,16 +35,20 @@ public class TutorialAnimations : MonoBehaviour {
 						  , fade_duration, false, true);
 		}
 
-		if(remaining_time < 0.0f){
-			Destruction();
+		if(remaining_time < 0.0f)
+        {
+            Destruction();
 		}
 
 		//If finally set to destroy, wait a "patient" time and then destroy it
 		if(destroy_this)
 		{
 			final_fade_duration -= Time.deltaTime;
-			if(final_fade_duration <= 0){
-				GameObject.FindGameObjectWithTag("Form").GetComponent<Image>().enabled = true;
+			if(final_fade_duration <= 0)
+            {
+                GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().playing = true;
+
+                GameObject.FindGameObjectWithTag("Form").GetComponent<Image>().enabled = true;
 				GameObject.Destroy(gameObject.transform.parent.gameObject);
 			}
 		}

@@ -261,11 +261,8 @@ public class SceneManager : MonoBehaviour {
         else
         {
             generateNewRandomForm();
-            changeImgForm(type);
-            if(!flashActive)
-            {
+            changeImgForm(type);    
             flashImage(false);
-            }
         }
         if (type == 1)
         {
@@ -296,17 +293,6 @@ public class SceneManager : MonoBehaviour {
             flashImg.enabled = true;
             flashTime = timeleft;
             flashActive = true;
-
-             //Play music of asserting the thingy
-           // GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayCorrect();
-            
-            //Green card
-            GameObject cosa = GameObject.FindGameObjectWithTag("Card");
-            if(cosa != null)
-            {
-                cosa.GetComponent<WinLosePaper>().GenerateGreenCard();
-
-            } 
         }
         else
         {
@@ -314,17 +300,6 @@ public class SceneManager : MonoBehaviour {
             flashImg.enabled = true;
             flashTime = timeleft;
             flashActive = true;
-
-            //Play music of failing the thingy
-           // GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>().PlayError();
-            
-            //Red card
-             //Green card
-            GameObject cosa = GameObject.FindGameObjectWithTag("Card");
-            if(cosa != null)
-            {
-                cosa.GetComponent<WinLosePaper>().GenerateRedCard();
-            }  
         }
     }
 
