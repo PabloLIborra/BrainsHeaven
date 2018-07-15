@@ -819,8 +819,8 @@ MonoBehaviour:
   nextPercentage: 60
   countCorrectForm: 0
   numCorrectFormToGetRight: 10
-  timeleft: 16
-  timeleftMax: 16
+  timeleft: 14
+  timeleftMax: 14
   playing: 0
   flashActive: 0
   transitionFlash: 0.3
