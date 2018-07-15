@@ -12,6 +12,9 @@ public class SceneManager : MonoBehaviour {
 
     public GameObject guide;
 
+    public GameObject textActual;
+    public GameObject textEndscore;
+
     int lastType;
 
     public bool bluetutorial = false;
@@ -40,6 +43,9 @@ public class SceneManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        textActual.GetComponent<Text>().text = countCorrectForm.ToString();
+        textEndscore.GetComponent<Text>().text = "/ " + numCorrectFormToGetRight.ToString();
 
         timeleft = timeleftMax;
 
@@ -242,6 +248,7 @@ public class SceneManager : MonoBehaviour {
             generateNewRandomForm();
             flashImage(true);
             countCorrectForm++;
+            textActual.GetComponent<Text>().text = countCorrectForm.ToString();
             enter = true;
         }
 
@@ -252,6 +259,7 @@ public class SceneManager : MonoBehaviour {
             generateNewRandomForm();
             flashImage(true);
             countCorrectForm++;
+            textActual.GetComponent<Text>().text = countCorrectForm.ToString();
             enter = true;
         }
 
@@ -267,6 +275,7 @@ public class SceneManager : MonoBehaviour {
                     generateNewRandomForm();
                     flashImage(true);
                     countCorrectForm++;
+                    textActual.GetComponent<Text>().text = countCorrectForm.ToString();
                     enter = true;
                 }
                 
@@ -277,6 +286,7 @@ public class SceneManager : MonoBehaviour {
                     generateNewRandomForm();
                     flashImage(true);
                     countCorrectForm++;
+                    textActual.GetComponent<Text>().text = countCorrectForm.ToString();
                     enter = true;
                 }
             }
