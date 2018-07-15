@@ -2002,8 +2002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcb16a589312b541986fbf6ee612fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wait_time: 2
-  screen_time: 4
+  wait_time: 0
+  screen_time: 6
   fade_duration: 0.6
   activated: 1
 --- !u!114 &1607227015
@@ -2654,8 +2654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcb16a589312b541986fbf6ee612fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wait_time: 0
-  screen_time: 6
+  wait_time: 2
+  screen_time: 4
   fade_duration: 0.6
   activated: 1
 --- !u!114 &2103148644
