@@ -12,6 +12,9 @@ public class SceneManager : MonoBehaviour {
 
     public GameObject guide;
 
+    public GameObject textActual;
+    public GameObject textEndscore;
+
     int lastType;
 
     public bool bluetutorial = false;
@@ -35,8 +38,14 @@ public class SceneManager : MonoBehaviour {
 
     public bool gamePause = false;
 
+    //Storytelling beats us all
+    public bool storytelling = false;
+
 	// Use this for initialization
 	void Start () {
+
+        textActual.GetComponent<Text>().text = countCorrectForm.ToString();
+        textEndscore.GetComponent<Text>().text = "/ " + numCorrectFormToGetRight.ToString();
 
         timeleft = timeleftMax;
 
@@ -109,44 +118,46 @@ public class SceneManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if(playing == true)
+        if(!storytelling)
         {
-            timeleft -= Time.deltaTime;
-            updateTimeBar();
-        }
-        if(timeleft < 0 && playing == true)
-        {
-            playing = false;
-
-            GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
-            imageForm.SetActive(false);
-
-            Canvas defeat = GameObject.FindGameObjectWithTag("DefeatCanvas").GetComponent<Canvas>();
-            defeat.enabled = true;
-        }
-
-        //Check Time Flash Image
-        if(flashActive)
-        {
-            if (flashTime - timeleft >= transitionFlash)
+            if(playing == true)
             {
-                Image flashImg;
-                flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
-                if(flashImg.enabled == true)
+                timeleft -= Time.deltaTime;
+                updateTimeBar();
+            }
+            if(timeleft < 0 && playing == true)
+            {
+                playing = false;
+
+                GameObject imageForm = GameObject.FindGameObjectWithTag("Form");
+                imageForm.SetActive(false);
+
+                Canvas defeat = GameObject.FindGameObjectWithTag("DefeatCanvas").GetComponent<Canvas>();
+                defeat.enabled = true;
+            }
+
+            //Check Time Flash Image
+            if(flashActive)
+            {
+                if (flashTime - timeleft >= transitionFlash)
                 {
-                    flashImg.enabled = false;
+                    Image flashImg;
+                    flashImg = GameObject.FindGameObjectWithTag("FlashGreen").GetComponent<Image>();
+                    if(flashImg.enabled == true)
+                    {
+                        flashImg.enabled = false;
 
-                }
+                    }
 
-                flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
-                if (flashImg.enabled == true)
-                {
-                    flashImg.enabled = false;
+                    flashImg = GameObject.FindGameObjectWithTag("FlashRed").GetComponent<Image>();
+                    if (flashImg.enabled == true)
+                    {
+                        flashImg.enabled = false;
 
+                    }
                 }
             }
         }
-
 	}
 
     void generateNewRandomForm()
@@ -237,6 +248,7 @@ public class SceneManager : MonoBehaviour {
             generateNewRandomForm();
             flashImage(true);
             countCorrectForm++;
+            textActual.GetComponent<Text>().text = countCorrectForm.ToString();
             enter = true;
         }
 
@@ -247,6 +259,7 @@ public class SceneManager : MonoBehaviour {
             generateNewRandomForm();
             flashImage(true);
             countCorrectForm++;
+            textActual.GetComponent<Text>().text = countCorrectForm.ToString();
             enter = true;
         }
 
@@ -262,6 +275,7 @@ public class SceneManager : MonoBehaviour {
                     generateNewRandomForm();
                     flashImage(true);
                     countCorrectForm++;
+                    textActual.GetComponent<Text>().text = countCorrectForm.ToString();
                     enter = true;
                 }
                 
@@ -272,6 +286,7 @@ public class SceneManager : MonoBehaviour {
                     generateNewRandomForm();
                     flashImage(true);
                     countCorrectForm++;
+                    textActual.GetComponent<Text>().text = countCorrectForm.ToString();
                     enter = true;
                 }
             }
@@ -300,7 +315,7 @@ public class SceneManager : MonoBehaviour {
         else
         {
             generateNewRandomForm();
-            changeImgForm(type);    
+            changeImgForm(type);
             flashImage(false);
         }
         if (type == 1)
