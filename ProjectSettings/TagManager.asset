@@ -20,6 +20,7 @@ TagManager:
   - Card
   - End_Level_Story
   - LevelButton
+  - Resolution
   layers:
   - Default
   - TransparentFX

@@ -108,7 +108,6 @@ public class MenuManager : MonoBehaviour {
 		//Open File
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create(Application.persistentDataPath + "save.dat");
-        Debug.Log(Application.persistentDataPath);
 		
 		//Create save data
 		SaveData s = new SaveData();
