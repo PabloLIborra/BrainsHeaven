@@ -21,6 +21,7 @@ TagManager:
   - End_Level_Story
   - LevelButton
   - Resolution
+  - Form2
   layers:
   - Default
   - TransparentFX
