@@ -198,6 +198,12 @@ public class ResolutionScript : MonoBehaviour {
                 Transform t = pauseCanvas.transform.Find("Background");
                 t.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
                 t.GetComponent<Image>().sprite = Resources.Load("pausemenu2", typeof(Sprite)) as Sprite;
+                float xPause = pauseCanvas.transform.Find("ResumeGame").GetComponent<RectTransform>().sizeDelta.x;
+                float yPause = pauseCanvas.transform.Find("ResumeGame").GetComponent<RectTransform>().sizeDelta.y;
+                pauseCanvas.transform.Find("ResumeGame").GetComponent<RectTransform>().sizeDelta = new Vector2((width * xPause) / 1920, (height * yPause) / 1080);
+                xPause = pauseCanvas.transform.Find("MainMenu").GetComponent<RectTransform>().sizeDelta.x;
+                yPause = pauseCanvas.transform.Find("MainMenu").GetComponent<RectTransform>().sizeDelta.y;
+                pauseCanvas.transform.Find("MainMenu").GetComponent<RectTransform>().sizeDelta = new Vector2((width * xPause) / 1920, (height * yPause) / 1080);
             }
 
             //VICTORY CANVAS
@@ -223,12 +229,13 @@ public class ResolutionScript : MonoBehaviour {
             {
                 sceneManager.transform.Find("Form").GetComponent<RectTransform>().anchoredPosition = new Vector2(13, -18);
                 sceneManager.transform.Find("PauseButton").GetComponent<RectTransform>().anchoredPosition = new Vector2(-730, 440);
-                sceneManager.transform.Find("Actuales").GetComponent<RectTransform>().anchoredPosition = new Vector2(660, -109);
-                sceneManager.transform.Find("Objetivo").GetComponent<RectTransform>().anchoredPosition = new Vector2(736, -109);
+                sceneManager.transform.Find("Actuales").GetComponent<RectTransform>().anchoredPosition = new Vector2(700, -85);
+                sceneManager.transform.Find("Objetivo").GetComponent<RectTransform>().anchoredPosition = new Vector2(766, -85);
 
                 Transform b = sceneManager.transform.Find("Background");
                 b.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-                b.localScale = new Vector3(0.93f, 0.93f, 1.0f);
+                float sizeScale = (1920 * 1.0f) / width;
+                b.localScale = new Vector3(sizeScale, sizeScale, 1.0f);
                 b.GetComponent<SpriteRenderer>().sprite = Resources.Load("background2", typeof(Sprite)) as Sprite;
                 b.GetComponent<SpriteRenderer>().material = Resources.Load("background2", typeof(Material)) as Material;
 
@@ -292,10 +299,17 @@ public class ResolutionScript : MonoBehaviour {
                 Transform t = pauseCanvas.transform.Find("Background");
                 t.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
                 t.GetComponent<Image>().sprite = Resources.Load("pausemenu", typeof(Sprite)) as Sprite;
+                float xPause = pauseCanvas.transform.Find("ResumeGame").GetComponent<RectTransform>().sizeDelta.x;
+                float yPause = pauseCanvas.transform.Find("ResumeGame").GetComponent<RectTransform>().sizeDelta.y;
+                pauseCanvas.transform.Find("ResumeGame").GetComponent<RectTransform>().sizeDelta = new Vector2((width* xPause) /2048, (height*yPause) /1536);
+                xPause = pauseCanvas.transform.Find("MainMenu").GetComponent<RectTransform>().sizeDelta.x;
+                yPause = pauseCanvas.transform.Find("MainMenu").GetComponent<RectTransform>().sizeDelta.y;
+                pauseCanvas.transform.Find("MainMenu").GetComponent<RectTransform>().sizeDelta = new Vector2((width * xPause) / 2048, (height * yPause) / 1536);
+
             }
 
             //VICTORY CANVAS
-            if(victoryCanvas != null) //Check if exists
+            if (victoryCanvas != null) //Check if exists
             {
                 victoryCanvas.transform.Find("Image").GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
                 victoryCanvas.transform.Find("NextLevel").GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, -520);
@@ -322,7 +336,8 @@ public class ResolutionScript : MonoBehaviour {
 
                 Transform b = sceneManager.transform.Find("Background");
                 b.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-                b.localScale = new Vector3(0.65f, 0.65f, 1.0f);
+                float sizeScale = (2048 * 0.65f) / width;
+                b.localScale = new Vector3(sizeScale, sizeScale, 1.0f);
                 b.GetComponent<SpriteRenderer>().sprite = Resources.Load("background", typeof(Sprite)) as Sprite;
                 b.GetComponent<SpriteRenderer>().material = Resources.Load("Materials/background1", typeof(Material)) as Material;
 
