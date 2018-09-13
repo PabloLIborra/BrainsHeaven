@@ -69,54 +69,12 @@ public class ResolutionScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        float width = Screen.width;
-        float height = Screen.height;
-        float actRes = width / height;
-
-        //Resolution booleans
-        bool is16_9 = false;
-        bool is4_3  = false;
-
-        //Activate proper checkers
-        if(actRes == (float)16/9)
-        {
-            is16_9 = true;
-        }
-
-        if(actRes == (float)4/3)
-        {
-            is4_3 = true;
-        }
-
-        //=====================================================================
-        //BACKGROUND
-        //=====================================================================
-        //Set default background color
-        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        mainCamera.GetComponent<Camera>().backgroundColor = Color.black;
-
-        //scale image to that of the resolution
-        GameObject background = GameObject.FindGameObjectWithTag("Background");
-        if(background != null)
-        {
-            float lastW = background.GetComponent<RectTransform>().sizeDelta.x;
-            float lastY = background.GetComponent<RectTransform>().sizeDelta.y;
-
-            background.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-            //Debug.Log(background.transform.localScale.y);
-
-            float scaleX = (lastW / width) * background.transform.localScale.x;
-            float scaleY = (lastY / height) * background.transform.localScale.y;
-
-            background.transform.localScale = new Vector3(scaleX, scaleY, 1.0f);
-        }
-
         //=====================================================================
         //CANVAS GENERAL STUFF
         //=====================================================================
         //Variables dependant on the name of the canvas (if the name changes you'll probably find the error heres)
         //HARDCODE IS BAD FOR YOUR SOUL
-        GameObject tutorialCanvas     = GameObject.Find("TutorialCanvas");
+        /*GameObject tutorialCanvas     = GameObject.Find("TutorialCanvas");
         GameObject pauseCanvas        = GameObject.Find("PauseCanvas");
         GameObject victoryCanvas      = GameObject.Find("VictoryCanvas");
         GameObject defeatCanvas       = GameObject.Find("DefeatCanvas");
@@ -350,7 +308,7 @@ public class ResolutionScript : MonoBehaviour {
                 t.GetComponent<RectTransform>().offsetMax = new Vector2(0.0f, -494.29f);
                 t.transform.Find("Mask").GetComponent<RectTransform>().offsetMax = new Vector2(2.384f, -167.1f);
             }
-        }
+        }*/
 
         //=====================================================================
         // UNIVERSAL xxd
@@ -359,6 +317,39 @@ public class ResolutionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        float width = Screen.width;
+        float height = Screen.height;
+
+        //=====================================================================
+        //BACKGROUND
+        //=====================================================================
+        //scale image to that of the resolution
+        GameObject background = GameObject.FindGameObjectWithTag("Background");
+        if(background != null)
+        {
+            float scaleX = (1536.0f / height) * 0.65f;
+            float scaleY = (2048.0f / width)  * 0.65f;
+
+            background.transform.localScale = new Vector3(scaleX, scaleY, 1.0f);
+        }
+
+        //=====================================================================
+        //GUIDE
+        //=====================================================================
+        //scale image to that of the resolution
+        GameObject g = GameObject.Find("Guide");
+        if(g != null)
+        {
+            float scaleX = (1536.0f / height);
+            float scaleY = (2048.0f / width);
+
+            g.transform.localScale = new Vector3(scaleX, scaleY, 1.0f);
+
+            float factor = (2048.0f - width)/1280.0f;
+            if(width/height < 16.0f/9.0f && width/height > 4.0f/3.0f){ // non-standard measures
+                factor += 0.3f;
+            }
+            g.transform.localPosition = new Vector3(g.transform.localPosition.x,-766.7f+factor, g.transform.localPosition.z);
+        }
 	}
 }
