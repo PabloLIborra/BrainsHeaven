@@ -603,6 +603,11 @@ Prefab:
       propertyPath: guide
       value: 
       objectReference: {fileID: 49873199}
+    - target: {fileID: 223117139962011968, guid: 8b4d90737353a05438c100b1cc7369d9,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b4d90737353a05438c100b1cc7369d9, type: 2}
   m_IsPrefabAsset: 0
