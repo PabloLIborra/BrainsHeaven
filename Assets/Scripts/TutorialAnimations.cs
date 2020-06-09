@@ -53,7 +53,7 @@ public class TutorialAnimations : MonoBehaviour {
 			GameObject.FindGameObjectWithTag("Form").GetComponent<Image>().enabled = true;
         	GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().storytelling = false;
             GameObject.FindGameObjectWithTag("Scene").GetComponent<SceneManager>().gamePause = false;
-            GameObject.Destroy(gameObject.transform.parent.gameObject);
+            Destroy(gameObject.transform.parent.gameObject);
 		}
 	}
 	
